@@ -67,12 +67,6 @@
     <string name="menu_send_to_desktop">Send to home</string>
     <string name="menu_alert">Remind me</string>
     <string name="menu_remove_remind">Delete reminder</string>
-    <!-- #####################################################################################  -->
-    <string name="menu_encrypt">Encrypt note</string>
-    <string name="menu_remove_encrypt">Delete encryption</string>
-
-    <string name="menu_set_importance">Set importance</string>
-    <!-- #####################################################################################  -->
     <string name="menu_title_select_folder">Select folder</string>
     <string name="menu_move_parent_folder">Parent folder</string>
     <string name="info_note_enter_desktop">Note added to home</string>
@@ -80,16 +74,6 @@
     <string name="alert_title_delete">Delete selected notes</string>
     <string name="alert_message_delete_notes">Confirm to delete the selected %d notes?</string>
     <string name="alert_message_delete_note">Confirm to delete this note?</string>
-    <!-- #####################################################################################  -->
-    <string name="alert_title_encrypt">Encryption</string>
-    <string name="alert_message_encrypt">Encrypt note successfully, password is %s</string>
-    <string name="alert_message_encrypt_error">Encrypt note unsuccessfully, password input is not same</string>
-    <string name="alert_message_decrypt">Decrypt note successfully</string>
-    <string name="alert_message_decrypt_error">Decrypt note unsuccessfully, password is wrong</string>
-    <string name="alert_message_remove_encrypt">Remove encryption successfully</string>
-
-    <string name="alert_title_importance">Set Importance</string>
-    <!-- #####################################################################################  -->
     <string name="format_move_notes_to_folder">Have moved selected %1$d notes to %2$s folder</string>
     <!-- Error information -->
     <string name="error_sdcard_unmounted">SD card busy, not available now</string>

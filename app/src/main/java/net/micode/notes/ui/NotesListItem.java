@@ -32,24 +32,20 @@ import net.micode.notes.tool.ResourceParser.NoteItemBgResources;
 
 public class NotesListItem extends LinearLayout {
     private ImageView mAlert;
-    private ImageView mLock;
     private TextView mTitle;
     private TextView mTime;
     private TextView mCallName;
     private NoteItemData mItemData;
     private CheckBox mCheckBox;
-    private ImageView mLabel;
 
     public NotesListItem(Context context) {
         super(context);
         inflate(context, R.layout.note_item, this);
         mAlert = (ImageView) findViewById(R.id.iv_alert_icon);
-        mLock = (ImageView) findViewById(R.id.iv_lock_icon);
         mTitle = (TextView) findViewById(R.id.tv_title);
         mTime = (TextView) findViewById(R.id.tv_time);
         mCallName = (TextView) findViewById(R.id.tv_name);
         mCheckBox = (CheckBox) findViewById(android.R.id.checkbox);
-        mLabel= (ImageView) findViewById(R.id.iv_importance);
     }
 
     public void bind(Context context, NoteItemData data, boolean choiceMode, boolean checked) {
@@ -96,41 +92,10 @@ public class NotesListItem extends LinearLayout {
                 } else {
                     mAlert.setVisibility(View.GONE);
                 }
-                if (data.hasPassword()) {
-                    mLock.setImageResource(R.drawable.lock);
-                    mLock.setVisibility(View.VISIBLE);
-                } else {
-                    mLock.setVisibility(View.GONE);
-                }
             }
         }
         mTime.setText(DateUtils.getRelativeTimeSpanString(data.getModifiedDate()));
 
-        if(data.hasImportance()){
-            switch (data.getImportance()) {
-                case 1:
-                    mLabel.setImageResource(R.drawable.attention1);
-                    break;
-                case 2:
-                    mLabel.setImageResource(R.drawable.attention2);
-                    break;
-                case 3:
-                    mLabel.setImageResource(R.drawable.attention3);
-                    break;
-                case 4:
-                    mLabel.setImageResource(R.drawable.attention4);
-                    break;
-                case 5:
-                    mLabel.setImageResource(R.drawable.attention5);
-                    break;
-                default:
-                   // mLabel.setImageResource(R.drawable.attention0);
-
-            }
-        }else{
-            //mLabel.setImageResource(R.drawable.attention0);
-        }
-        mLabel.setVisibility(View.VISIBLE);
         setBackground(data);
     }
 

@@ -42,10 +42,6 @@ public class WorkingNote {
     // Note mode
     private int mMode;
 
-    private String mPassword;
-
-    private int mImportance;
-
     private long mAlertDate;
 
     private long mModifiedDate;
@@ -82,9 +78,7 @@ public class WorkingNote {
             NoteColumns.BG_COLOR_ID,
             NoteColumns.WIDGET_ID,
             NoteColumns.WIDGET_TYPE,
-            NoteColumns.MODIFIED_DATE,
-            NoteColumns.PASSWORD,
-            NoteColumns.IMPORTANCE
+            NoteColumns.MODIFIED_DATE
     };
 
     private static final int DATA_ID_COLUMN = 0;
@@ -107,10 +101,6 @@ public class WorkingNote {
 
     private static final int NOTE_MODIFIED_DATE_COLUMN = 5;
 
-    private static final int NOTE_PASSWORD = 6;
-
-    private static final int NOTE_IMPORTANCE = 7;
-
     // New note construct
     private WorkingNote(Context context, long folderId) {
         mContext = context;
@@ -122,9 +112,6 @@ public class WorkingNote {
         mIsDeleted = false;
         mMode = 0;
         mWidgetType = Notes.TYPE_WIDGET_INVALIDE;
-
-        mPassword = "";
-        mImportance = 0;
     }
 
     // Existing note construct
@@ -137,9 +124,6 @@ public class WorkingNote {
         loadNote();
     }
 
-    /**
-     * 通过游标cursor从数据库中加载便签及其属性
-     */
     private void loadNote() {
         Cursor cursor = mContext.getContentResolver().query(
                 ContentUris.withAppendedId(Notes.CONTENT_NOTE_URI, mNoteId), NOTE_PROJECTION, null,
@@ -153,8 +137,6 @@ public class WorkingNote {
                 mWidgetType = cursor.getInt(NOTE_WIDGET_TYPE_COLUMN);
                 mAlertDate = cursor.getLong(NOTE_ALERTED_DATE_COLUMN);
                 mModifiedDate = cursor.getLong(NOTE_MODIFIED_DATE_COLUMN);
-                mPassword = cursor.getString(NOTE_PASSWORD);
-                mImportance =cursor.getInt(NOTE_IMPORTANCE);
             }
             cursor.close();
         } else {
@@ -163,9 +145,7 @@ public class WorkingNote {
         }
         loadNoteData();
     }
-    /**
-     *通过游标cursor从数据库中加载便签数据
-     */
+
     private void loadNoteData() {
         Cursor cursor = mContext.getContentResolver().query(Notes.CONTENT_DATA_URI, DATA_PROJECTION,
                 DataColumns.NOTE_ID + "=?", new String[] {
@@ -193,9 +173,7 @@ public class WorkingNote {
             throw new IllegalArgumentException("Unable to find note's data with id " + mNoteId);
         }
     }
-    /**
-     * 创建空便签
-     */
+
     public static WorkingNote createEmptyNote(Context context, long folderId, int widgetId,
             int widgetType, int defaultBgColorId) {
         WorkingNote note = new WorkingNote(context, folderId);
@@ -234,8 +212,6 @@ public class WorkingNote {
         }
     }
 
-
-
     public boolean existInDatabase() {
         return mNoteId > 0;
     }
@@ -251,22 +227,6 @@ public class WorkingNote {
 
     public void setOnSettingStatusChangedListener(NoteSettingChangedListener l) {
         mNoteSettingStatusListener = l;
-    }
-
-    /**
-     * 该方法用于设置当前工作便签的访问密码
-     * @param password 新的访问密码
-     */
-    public void setPassword(String password) {
-        //将该类的mPassword属性设置为新的访问密码
-        mPassword = password;
-        //将修改后的便签密码写入到便签数据库中
-        mNote.setNoteValue(NoteColumns.PASSWORD, mPassword);
-    }
-
-    public void setImportance(int importance) {
-        mImportance = importance;
-        mNote.setNoteValue(NoteColumns.IMPORTANCE, String.valueOf(mImportance));
     }
 
     public void setAlertDate(long date, boolean set) {
@@ -333,14 +293,6 @@ public class WorkingNote {
         mNote.setCallData(CallNote.PHONE_NUMBER, phoneNumber);
         mNote.setNoteValue(NoteColumns.PARENT_ID, String.valueOf(Notes.ID_CALL_RECORD_FOLDER));
     }
-
-    public boolean hasPassword() { return !mPassword.equals(""); }
-
-    public String getPassword() { return mPassword; }
-
-    public boolean hasImportance() { return (mImportance > 0); }
-
-    public int getImportance() { return mImportance; }
 
     public boolean hasClockAlert() {
         return (mAlertDate > 0 ? true : false);

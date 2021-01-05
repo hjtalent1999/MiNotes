@@ -8,20 +8,8 @@ should evaluate whether these are still needed in your project and if
 so manually move them:
 
 * .gitignore
-* .idea\
-* .idea\.name
-* .idea\Notes-master.iml
-* .idea\codeStyles\
-* .idea\codeStyles\Project.xml
-* .idea\compiler.xml
-* .idea\copyright\
-* .idea\copyright\profiles_settings.xml
-* .idea\misc.xml
-* .idea\modules.xml
-* .idea\vcs.xml
-* .idea\workspace.xml
 * NOTICE
-* README
+* README.md
 
 Moved Files:
 ------------
@@ -29,7 +17,6 @@ Android Gradle projects use a different directory structure than ADT
 Eclipse projects. Here's how the projects were restructured:
 
 * AndroidManifest.xml => app\src\main\AndroidManifest.xml
-* assets\ => app\src\main\assets
 * res\ => app\src\main\res\
 * src\ => app\src\main\java\
 

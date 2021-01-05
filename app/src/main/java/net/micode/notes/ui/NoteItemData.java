@@ -40,8 +40,6 @@ public class NoteItemData {
         NoteColumns.TYPE,
         NoteColumns.WIDGET_ID,
         NoteColumns.WIDGET_TYPE,
-        NoteColumns.PASSWORD,
-        NoteColumns.IMPORTANCE
     };
 
     private static final int ID_COLUMN                    = 0;
@@ -56,8 +54,6 @@ public class NoteItemData {
     private static final int TYPE_COLUMN                  = 9;
     private static final int WIDGET_ID_COLUMN             = 10;
     private static final int WIDGET_TYPE_COLUMN           = 11;
-    private static final int PASSWORD                     = 12;
-    private static final int IMPORTANCE                   = 13;
 
     private long mId;
     private long mAlertDate;
@@ -73,8 +69,6 @@ public class NoteItemData {
     private int mWidgetType;
     private String mName;
     private String mPhoneNumber;
-    private String mPassword;
-    private int mImportance;
 
     private boolean mIsLastItem;
     private boolean mIsFirstItem;
@@ -97,8 +91,6 @@ public class NoteItemData {
         mType = cursor.getInt(TYPE_COLUMN);
         mWidgetId = cursor.getInt(WIDGET_ID_COLUMN);
         mWidgetType = cursor.getInt(WIDGET_TYPE_COLUMN);
-        mPassword = cursor.getString(PASSWORD);
-        mImportance = cursor.getInt(IMPORTANCE);
 
         mPhoneNumber = "";
         if (mParentId == Notes.ID_CALL_RECORD_FOLDER) {
@@ -141,13 +133,6 @@ public class NoteItemData {
             }
         }
     }
-    public boolean hasPassword() { return !mPassword.equals(""); }
-
-    public String getPassword() { return mPassword; }
-
-    public boolean hasImportance() { return (mImportance > 0); }
-
-    public int getImportance() { return mImportance; }
 
     public boolean isOneFollowingFolder() {
         return mIsOneNoteFollowingFolder;

@@ -30,16 +30,14 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 
-// CursorAdapter这个类是继承于BaseAdapter的，它是一个虚类，它为Cursor和ListView连接提供了桥梁。覆盖getView方法，
-//在getView方法中调用了newView和bindView方法，
-//我们在写CursorAdapter时必须实现它的两个方法：
+
 public class NotesListAdapter extends CursorAdapter {
     private static final String TAG = "NotesListAdapter";
     private Context mContext;
     private HashMap<Integer, Boolean> mSelectedIndex;
     private int mNotesCount;
     private boolean mChoiceMode;
-    //窗口属性
+
     public static class AppWidgetAttribute {
         public int widgetId;
         public int widgetType;
@@ -51,12 +49,12 @@ public class NotesListAdapter extends CursorAdapter {
         mContext = context;
         mNotesCount = 0;
     }
-    //并不是每次都被调用的，它只在实例化的时候调用,数据增加的时候也会调用,但是在重绘(比如修改条目里的TextView的内容)的时候不会被调用
+
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         return new NotesListItem(context);
     }
-    //代码中可以看出在绘制Item之前一定会调用bindView方法它在重绘的时候也同样被调用
+
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
         if (view instanceof NotesListItem) {

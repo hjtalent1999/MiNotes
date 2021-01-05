@@ -77,8 +77,9 @@ public class GTaskASyncTask extends AsyncTask<Void, String, Integer> {
             pendingIntent = PendingIntent.getActivity(mContext, 0, new Intent(mContext,
                     NotesListActivity.class), 0);
         }
-        notification.setLatestEventInfo(mContext, mContext.getString(R.string.app_name), content,
-                pendingIntent);
+//        notification.setLatestEventInfo(mContext, mContext.getString(R.string.app_name), content,
+//                pendingIntent);
+        notification.contentIntent = pendingIntent;
         mNotifiManager.notify(GTASK_SYNC_NOTIFICATION_ID, notification);
     }
 

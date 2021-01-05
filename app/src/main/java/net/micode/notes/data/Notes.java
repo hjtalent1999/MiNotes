@@ -26,9 +26,9 @@ public class Notes {
 
     /**
      * Following IDs are system folders' identifiers
-     * {@link Notes#ID_ROOT_FOLDER } is default folder  默认文件夹 0
-     * {@link Notes#ID_TEMPARAY_FOLDER } is for notes belonging no folder 无文件夹的便签 -1
-     * {@link Notes#ID_CALL_RECORD_FOLDER} is to store call records 存储所有记录 -2
+     * {@link Notes#ID_ROOT_FOLDER } is default folder
+     * {@link Notes#ID_TEMPARAY_FOLDER } is for notes belonging no folder
+     * {@link Notes#ID_CALL_RECORD_FOLDER} is to store call records
      */
     public static final int ID_ROOT_FOLDER = 0;
     public static final int ID_TEMPARAY_FOLDER = -1;
@@ -165,14 +165,8 @@ public class Notes {
          * <P> Type : INTEGER (long) </P>
          */
         public static final String VERSION = "version";
-
-        public static final String PASSWORD = "password";
-
-        public static final String IMPORTANCE = "importance";
     }
-    /*
-     * 便签数据在数据库中的表头
-     */
+
     public interface DataColumns {
         /**
          * The unique ID for a row

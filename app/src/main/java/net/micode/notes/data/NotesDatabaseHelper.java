@@ -28,7 +28,7 @@ import net.micode.notes.data.Notes.NoteColumns;
 
 
 public class NotesDatabaseHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME = "note2.db";
+    private static final String DB_NAME = "note.db";
 
     private static final int DB_VERSION = 4;
 
@@ -60,9 +60,7 @@ public class NotesDatabaseHelper extends SQLiteOpenHelper {
             NoteColumns.LOCAL_MODIFIED + " INTEGER NOT NULL DEFAULT 0," +
             NoteColumns.ORIGIN_PARENT_ID + " INTEGER NOT NULL DEFAULT 0," +
             NoteColumns.GTASK_ID + " TEXT NOT NULL DEFAULT ''," +
-            NoteColumns.VERSION + " INTEGER NOT NULL DEFAULT 0," +
-            NoteColumns.PASSWORD + " TEXT NOT NULL DEFAULT ''," +
-            NoteColumns.IMPORTANCE + " INTEGER NOT NULL DEFAULT 0" +
+            NoteColumns.VERSION + " INTEGER NOT NULL DEFAULT 0" +
         ")";
 
     private static final String CREATE_DATA_TABLE_SQL =
@@ -359,10 +357,6 @@ public class NotesDatabaseHelper extends SQLiteOpenHelper {
 
     private void upgradeToV4(SQLiteDatabase db) {
         db.execSQL("ALTER TABLE " + TABLE.NOTE + " ADD COLUMN " + NoteColumns.VERSION
-                + " INTEGER NOT NULL DEFAULT 0");
-        db.execSQL("ALTER TABLE " + TABLE.NOTE + " ADD COLUMN " + NoteColumns.PASSWORD
-                + " TEXT NOT NULL DEFAULT ''");
-        db.execSQL("ALTER TABLE " + TABLE.NOTE + " ADD COLUMN " + NoteColumns.IMPORTANCE
                 + " INTEGER NOT NULL DEFAULT 0");
     }
 }

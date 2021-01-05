@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "27.0.3"
+    compileSdkVersion 26
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "net.micode.notes"
         minSdkVersion 14
-        targetSdkVersion 14
+        targetSdkVersion 26
     }
 
     buildTypes {
@@ -16,5 +16,5 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    android{ useLibrary 'org.apache.http.legacy' }
 }
-

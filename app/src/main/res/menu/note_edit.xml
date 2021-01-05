@@ -49,17 +49,4 @@
     <item
         android:id="@+id/menu_delete_remind"
         android:title="@string/menu_remove_remind" />
-
-    <item
-        android:id="@+id/menu_encrypt"
-        android:title="@string/menu_encrypt" />
-
-    <item
-        android:id="@+id/menu_delete_encrypt"
-        android:title="@string/menu_remove_encrypt" />
-
-    <item
-        android:id="@+id/menu_set_importance"
-        android:title="@string/menu_set_importance"/>
-
 </menu>

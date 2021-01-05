@@ -13,14 +13,10 @@
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
      See the License for the specific language governing permissions and
      limitations under the License.
+-->
 
--->
-<!--
-   主页面 线性垂直布局 一个文本，一个列表，一个新增便签按钮
--->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/list_background">
@@ -59,6 +55,15 @@
         android:layout_height="wrap_content"
         android:focusable="false"
         android:layout_gravity="bottom" />
-
-
+    
+    <Button
+        android:id="@+id/btn_set"
+        android:background="@drawable/ic_menu_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="false"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:onClick="OnOpenMenu"
+        android:layout_gravity="bottom|right" />
 </FrameLayout>
