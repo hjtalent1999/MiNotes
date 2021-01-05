@@ -179,7 +179,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                return  ;
+                return;
             } finally {
                 if(in != null) {
                     try {
