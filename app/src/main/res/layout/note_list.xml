@@ -51,11 +51,11 @@
     <Button
         android:id="@+id/btn_new_note"
         android:background="@drawable/new_note"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:focusable="false"
-        android:layout_gravity="bottom" />
-    <!--右下角菜单键-->
+        android:layout_gravity="bottom|right" />
+    <!--菜单键-->
     <Button
         android:id="@+id/btn_set"
         android:background="@drawable/ic_menu_more"
@@ -65,5 +65,5 @@
         android:padding="10dp"
         android:layout_margin="10dp"
         android:onClick="OnOpenMenu"
-        android:layout_gravity="bottom|right" />
+        android:layout_gravity="top|right" />
 </FrameLayout>

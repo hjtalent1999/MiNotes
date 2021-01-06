@@ -132,7 +132,7 @@
         android:layout_width="wrap_content"
         android:background="@drawable/bg_color_btn_mask"
         android:layout_gravity="top|right" />
-
+    <!-- 背景色选择面板-->
     <LinearLayout
         android:id="@+id/note_bg_color_selector"
         android:layout_width="wrap_content"
