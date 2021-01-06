@@ -45,9 +45,9 @@
             android:cacheColorHint="@null"
             android:listSelector="@android:color/transparent"
             android:divider="@null"
-            android:fadingEdge="@null" />
+            android:fadingEdge="" />
     </LinearLayout>
-
+    <!--创建新便签-->
     <Button
         android:id="@+id/btn_new_note"
         android:background="@drawable/new_note"
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:focusable="false"
         android:layout_gravity="bottom" />
-    
+    <!--右下角菜单键-->
     <Button
         android:id="@+id/btn_set"
         android:background="@drawable/ic_menu_more"

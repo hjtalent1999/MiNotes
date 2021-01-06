@@ -173,7 +173,7 @@ public class WorkingNote {
             throw new IllegalArgumentException("Unable to find note's data with id " + mNoteId);
         }
     }
-
+    //
     public static WorkingNote createEmptyNote(Context context, long folderId, int widgetId,
             int widgetType, int defaultBgColorId) {
         WorkingNote note = new WorkingNote(context, folderId);
@@ -186,7 +186,7 @@ public class WorkingNote {
     public static WorkingNote load(Context context, long id) {
         return new WorkingNote(context, id, 0);
     }
-
+    //保存便签，并返回bool型
     public synchronized boolean saveNote() {
         if (isWorthSaving()) {
             if (!existInDatabase()) {
