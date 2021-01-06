@@ -17,4 +17,5 @@
 
 <resources>
     <color name="user_query_highlight">#335b5b5b</color>
+    <color name="font_color_yellow">yellow</color>
 </resources>

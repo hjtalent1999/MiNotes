@@ -280,7 +280,39 @@
                     android:text="@string/menu_font_small"
                     android:textAppearance="@style/TextAppearanceUnderMenuIcon" />
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/menu_font_color_selector"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/font_size_selector_bg"
+                android:layout_gravity="bottom"
+                android:visibility="gone">
 
+                <FrameLayout
+                    android:id="@+id/ll_color_yellow"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/font_small"
+                            android:layout_marginBottom="5dip" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/menu_font_color_yellow"
+                            android:textAppearance="@style/TextAppearanceUnderMenuIcon" />
+                    </LinearLayout>
             <ImageView
                 android:id="@+id/iv_small_select"
                 android:layout_width="wrap_content"
@@ -294,7 +326,7 @@
         </FrameLayout>
 
         <FrameLayout
-            android:id="@+id/ll_font_normal"
+            android:id="@+id/ll_font_color_black"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1">
@@ -332,7 +364,7 @@
         </FrameLayout>
 
         <FrameLayout
-            android:id="@+id/ll_font_large"
+            android:id="@+id/ll_font_color_green"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1">
@@ -370,7 +402,7 @@
         </FrameLayout>
 
         <FrameLayout
-            android:id="@+id/ll_font_super"
+            android:id="@+id/ll_font_color_red"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1">
