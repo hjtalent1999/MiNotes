@@ -93,7 +93,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 
     private enum ListEditState {
         NOTE_LIST, SUB_FOLDER, CALL_RECORD_FOLDER
-    }
+    };
 
     private ListEditState mState;
 
