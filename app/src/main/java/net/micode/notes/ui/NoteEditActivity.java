@@ -128,8 +128,6 @@ public class NoteEditActivity extends Activity implements OnClickListener,
 
     private View mFontSizeSelector;
 
-    private View mColorSelector;
-
     private EditText mNoteEditor;
 
     private View mNoteEditorPanel;
@@ -347,10 +345,6 @@ public class NoteEditActivity extends Activity implements OnClickListener,
                 && !inRangeOfView(mFontSizeSelector, ev)) {
             mFontSizeSelector.setVisibility(View.GONE);
             return true;
-        }if (mColorSelector.getVisibility() == View.VISIBLE
-                && !inRangeOfView(mColorSelector, ev)) {
-            mColorSelector.setVisibility(View.GONE);
-            return true;
         }
         return super.dispatchTouchEvent(ev);
     }
@@ -386,11 +380,6 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         }
 
         mFontSizeSelector = findViewById(R.id.font_size_selector);
-        for (int id : sFontSizeBtnsMap.keySet()) {
-            View view = findViewById(id);
-            view.setOnClickListener(this);
-        };
-        mColorSelector = findViewById(R.id.font_color_selector);
         for (int id : sFontSizeBtnsMap.keySet()) {
             View view = findViewById(id);
             view.setOnClickListener(this);
@@ -441,7 +430,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         if (id == R.id.btn_set_bg_color) {
             mNoteBgColorSelector.setVisibility(View.VISIBLE);
             findViewById(sBgSelectorSelectionMap.get(mWorkingNote.getBgColorId())).setVisibility(
-                    -                    View.VISIBLE);
+                    View.VISIBLE);
         } else if (sBgSelectorBtnsMap.containsKey(id)) {
             findViewById(sBgSelectorSelectionMap.get(mWorkingNote.getBgColorId())).setVisibility(
                     View.GONE);
@@ -540,13 +529,6 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             case R.id.menu_font_size:
                 mFontSizeSelector.setVisibility(View.VISIBLE);
                 findViewById(sFontSelectorSelectionMap.get(mFontSizeId)).setVisibility(View.VISIBLE);
-                break;
-            case R.id.menu_font_color:
-
-                Toast t1oast = null;
-                t1oast.makeText(getApplicationContext(), "密码不能为空",Toast.LENGTH_SHORT).show();
-                //mFontSizeSelector.setVisibility(View.VISIBLE);
-                //findViewById(sFontSelectorSelectionMap.get(mFontSizeId)).setVisibility(View.VISIBLE);
                 break;
             case R.id.menu_list_mode:
                 mWorkingNote.setCheckListMode(mWorkingNote.getCheckListMode() == 0 ?
