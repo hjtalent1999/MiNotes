@@ -39,6 +39,12 @@ public class ResourceParser {
 
     public static final int BG_DEFAULT_FONT_SIZE = TEXT_MEDIUM;
 
+    public static final int FONT_BLACK           = 0;
+    public static final int FONT_BLUE             = 1;
+    public static final int FONT_YELLOW            = 2;
+    public static final int FONT_GREEN            = 3;
+    public static final int FONT_RED              = 4;
+
     public static class NoteBgResources {
         private final static int [] BG_EDIT_RESOURCES = new int [] {
             R.drawable.edit_yellow,

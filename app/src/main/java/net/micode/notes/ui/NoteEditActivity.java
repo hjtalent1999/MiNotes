@@ -75,13 +75,13 @@ import java.util.regex.Pattern;
 public class NoteEditActivity extends Activity implements OnClickListener,
         NoteSettingChangedListener, OnTextViewChangeListener {
     private class HeadViewHolder {
-        public TextView tvModified;
+        public TextView tvModified; //修改时间
 
-        public ImageView ivAlertIcon;
+        public ImageView ivAlertIcon;//提醒的闹钟图标
 
-        public TextView tvAlertDate;
+        public TextView tvAlertDate; //提醒倒计时
 
-        public ImageView ibSetBgColor;
+        public ImageView ibSetBgColor;//主题选择图标
     }
 
     private static final Map<Integer, Integer> sBgSelectorBtnsMap = new HashMap<Integer, Integer>();
@@ -118,6 +118,15 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         sFontSelectorSelectionMap.put(ResourceParser.TEXT_SUPER, R.id.iv_super_select);
     }
 
+    private static final Map<Integer, Integer> sFontColorSelectorSelectionMap = new HashMap<Integer, Integer>(); //字体颜色map
+    static {
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_BLACK, R.id.iv_large_select);
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_BLUE, R.id.iv_small_select);
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_YELLOW, R.id.iv_medium_select);
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_GREEN, R.id.iv_super_select);
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_RED,R.id.iv_alert_icon);
+    }
+
     private static final String TAG = "NoteEditActivity";
 
     private HeadViewHolder mNoteHeaderHolder;
@@ -127,6 +136,8 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     private View mNoteBgColorSelector;
 
     private View mFontSizeSelector;
+
+    private  View mFontColorSelector;
 
     private EditText mNoteEditor;
 
@@ -530,6 +541,11 @@ public class NoteEditActivity extends Activity implements OnClickListener,
                 mFontSizeSelector.setVisibility(View.VISIBLE);
                 findViewById(sFontSelectorSelectionMap.get(mFontSizeId)).setVisibility(View.VISIBLE);
                 break;
+            case R.id.menu_font_color:
+                Toast toast=Toast.makeText(getApplicationContext(), "更换颜色字体", Toast.LENGTH_SHORT);
+                toast.show();
+                //mFontColorSelector.setVisibility(View.VISIBLE);
+                //findViewById(sFontColorSelectorSelectionMap.get(mFontColorId)).setVisibility(View.VISIBLE);
             case R.id.menu_list_mode:
                 mWorkingNote.setCheckListMode(mWorkingNote.getCheckListMode() == 0 ?
                         TextNote.MODE_CHECK_LIST : 0);
