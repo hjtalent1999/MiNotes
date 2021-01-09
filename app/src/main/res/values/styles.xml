@@ -16,6 +16,7 @@
 -->
 
 <resources>
+
     <style name="TextAppearanceSuper">
         <item name="android:textSize">@dimen/text_font_size_super</item>
         <item name="android:textColorLink">#0000ff</item>
@@ -65,5 +66,17 @@
     <style name="NoteActionBarStyle" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
         <item name="android:displayOptions" />
         <item name="android:visibility">gone</item>
+    </style>
+    <!-- for NavigationView -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
+<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+<!--        <item name="colorAccent">@color/colorAccent</item>-->
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
 </resources>

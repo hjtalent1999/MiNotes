@@ -16,7 +16,6 @@
 
 package net.micode.notes.ui;
 
-import android.R.menu;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -32,6 +31,9 @@ import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -60,6 +62,7 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import net.micode.notes.R;
 import net.micode.notes.data.Notes;
 import net.micode.notes.data.Notes.NoteColumns;
@@ -77,6 +80,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashSet;
+import java.util.NavigableMap;
 
 public class NotesListActivity extends Activity implements OnClickListener, OnItemLongClickListener {
     private static final int FOLDER_NOTE_LIST_QUERY_TOKEN = 0;
@@ -104,7 +108,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     private ListView mNotesListView;
 
     private Button mAddNewNote;
-    private Button mMenuSet;
+
 
     private boolean mDispatch;
 
@@ -135,7 +139,11 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     //打开便签 102 创建便签 103
     private final static int REQUEST_CODE_OPEN_NODE = 102;
     private final static int REQUEST_CODE_NEW_NODE  = 103;
-
+    //侧滑菜单栏代码
+    private DrawerLayout mDrawerLayout;
+    private NavigationView mMenuNv;
+    //菜单按钮
+    private Button mMenuSet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -247,8 +255,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         mAddNewNote = (Button) findViewById(R.id.btn_new_note);
         mAddNewNote.setOnClickListener(this);
         mAddNewNote.setOnTouchListener(new NewNoteOnTouchListener());
-        //绑定菜单按钮
-        mMenuSet = (Button) findViewById(R.id.btn_set);
+
         mDispatch = false;
         mDispatchY = 0;
         mOriginY = 0;
@@ -256,6 +263,26 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         mTitleBar = (TextView) findViewById(R.id.tv_title_bar);
         mState = ListEditState.NOTE_LIST;
         mModeCallBack = new ModeCallback();
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mMenuNv = (NavigationView) findViewById(R.id.nv_layout);
+        mMenuSet = (Button) findViewById(R.id.btn_set);
+        //绑定菜单按钮
+        mMenuSet.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        mMenuNv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                onOptionsItemSelected(item.getItemId());
+                // 关闭侧滑菜单
+                mDrawerLayout.closeDrawers();
+                return true;
+            }
+        });
     }
     //listview点击多选和菜单点击事件回调类
     private class ModeCallback implements ListView.MultiChoiceModeListener, OnMenuItemClickListener {
@@ -845,28 +872,18 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         }
         return true;
     }
-    //选择新建文件夹等操作
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+
+
+    //选择菜单新建文件夹等操作
+
+    public boolean onOptionsItemSelected(int item) {
+        switch (item) {
             case R.id.menu_new_folder: {
                 showCreateOrModifyFolderDialog(true);
                 break;
             }
             case R.id.menu_export_text: {
                 exportNoteToText();
-                break;
-            }
-            case R.id.menu_sync: {
-                if (isSyncMode()) {
-                    if (TextUtils.equals(item.getTitle(), getString(R.string.menu_sync))) {
-                        GTaskSyncService.startSync(this);
-                    } else {
-                        GTaskSyncService.cancelSync(this);
-                    }
-                } else {
-                    startPreferenceActivity();
-                }
                 break;
             }
             case R.id.menu_setting: {
