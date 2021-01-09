@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-
-<FrameLayout
-    android:layout_width="fill_parent"
+<FrameLayout android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/list_background"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/toolbar"
+        android:background="@color/darkturquoise"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/back"
+        app:popupTheme="@style/OverflowMenuStyle"
+    >
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -42,14 +49,14 @@
                 android:layout_marginLeft="2dip"
                 android:layout_marginRight="8dip"
                 android:textAppearance="@style/TextAppearanceSecondaryItem" />
-            <!-- 主题颜色选择-->
+
             <ImageButton
                 android:id="@+id/menu_more"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:onClick="OnOpenMenu"
-                android:background="@drawable/ic_menu_more_dark" />
+                android:background="@drawable/ic_menu_more_dark"
+                android:onClick="OnOpenMenu" />
 
             <ImageView
         		android:id="@+id/btn_set_bg_color"

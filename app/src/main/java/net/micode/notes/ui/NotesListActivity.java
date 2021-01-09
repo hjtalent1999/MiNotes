@@ -861,8 +861,6 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         if (mState == ListEditState.NOTE_LIST) {
             getMenuInflater().inflate(R.menu.note_list, menu);
             // set sync or sync_cancel
-            menu.findItem(R.id.menu_sync).setTitle(
-                    GTaskSyncService.isSyncing() ? R.string.menu_sync_cancel : R.string.menu_sync);
         } else if (mState == ListEditState.SUB_FOLDER) {
             getMenuInflater().inflate(R.menu.sub_folder, menu);
         } else if (mState == ListEditState.CALL_RECORD_FOLDER) {
