@@ -43,13 +43,7 @@
                 android:layout_marginRight="8dip"
                 android:textAppearance="@style/TextAppearanceSecondaryItem" />
             <!-- 主题颜色选择-->
-            <ImageButton
-                android:id="@+id/menu_more"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:onClick="OnOpenMenu"
-                android:background="@drawable/ic_menu_more_dark" />
+
 
             <ImageView
         		android:id="@+id/btn_set_bg_color"
@@ -58,6 +52,14 @@
                 android:padding="10dp"
                 android:layout_gravity="center"
                 android:background="@drawable/bg_btn_set_color" />
+
+            <ImageButton
+                android:id="@+id/menu_more"
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@drawable/ic_menu_more_dark"
+                android:onClick="OnOpenMenu" />
         </LinearLayout>
 
         <LinearLayout
@@ -115,10 +117,10 @@
     </LinearLayout>
     <!--背景色选择点击事件-->
     <ImageView
-        android:layout_height="43dip"
-        android:layout_width="wrap_content"
-        android:background="@drawable/bg_color_btn_mask"
-        android:layout_gravity="top|right" />
+        android:layout_width="88dp"
+        android:layout_height="29dp"
+        android:layout_gravity="top|right"
+        android:background="@drawable/bg_color_btn_mask" />
     <!-- 背景色选择面板-->
     <LinearLayout
         android:id="@+id/note_bg_color_selector"
