@@ -46,6 +46,10 @@ public class AlarmAlertActivity extends Activity implements OnClickListener, OnD
     private static final int SNIPPET_PREW_MAX_LEN = 60;
     MediaPlayer mPlayer;
 
+    public AlarmAlertActivity() {
+        super();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

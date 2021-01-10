@@ -60,6 +60,8 @@
     <string name="menu_font_color">Font Color</string>
     <string name="menu_font_color_black">Black</string>
     <string name="menu_font_color_red">Red</string>
+    <string name="menu_font_color_green">Green</string>
+    <string name="menu_font_color_blue">Blue</string>
     <string name="menu_font_color_yellow">Yellow</string>
     <string name="menu_list_mode">Enter check list</string>
     <string name="menu_normal_mode">Leave check list</string>

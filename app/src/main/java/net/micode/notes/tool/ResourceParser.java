@@ -45,6 +45,8 @@ public class ResourceParser {
     public static final int FONT_GREEN            = 3;
     public static final int FONT_RED              = 4;
 
+    public static final int BG_DEFAULT_FONT_COLOR = FONT_BLACK;
+
     public static class NoteBgResources {
         private final static int [] BG_EDIT_RESOURCES = new int [] {
             R.drawable.edit_yellow,
@@ -61,6 +63,7 @@ public class ResourceParser {
             R.drawable.edit_title_green,
             R.drawable.edit_title_red
         };
+
 
         public static int getNoteBgResource(int id) {
             return BG_EDIT_RESOURCES[id];
