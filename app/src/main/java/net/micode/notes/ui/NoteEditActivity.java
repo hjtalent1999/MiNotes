@@ -16,40 +16,25 @@
 
 package net.micode.notes.ui;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.app.SearchManager;
 import android.appwidget.AppWidgetManager;
-import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
-import android.text.Editable;
-import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
 import android.text.style.BackgroundColorSpan;
-import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -62,7 +47,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -81,7 +65,6 @@ import net.micode.notes.ui.NoteEditText.OnTextViewChangeListener;
 import net.micode.notes.widget.NoteWidgetProvider_2x;
 import net.micode.notes.widget.NoteWidgetProvider_4x;
 
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -102,6 +85,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     }
 
     private static final Map<Integer, Integer> sBgSelectorBtnsMap = new HashMap<Integer, Integer>();
+
     static {
         sBgSelectorBtnsMap.put(R.id.iv_bg_yellow, ResourceParser.YELLOW);
         sBgSelectorBtnsMap.put(R.id.iv_bg_red, ResourceParser.RED);
@@ -111,6 +95,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     }
 
     private static final Map<Integer, Integer> sBgSelectorSelectionMap = new HashMap<Integer, Integer>();
+
     static {
         sBgSelectorSelectionMap.put(ResourceParser.YELLOW, R.id.iv_bg_yellow_select);
         sBgSelectorSelectionMap.put(ResourceParser.RED, R.id.iv_bg_red_select);
@@ -120,6 +105,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     }
 
     private static final Map<Integer, Integer> sFontSizeBtnsMap = new HashMap<Integer, Integer>();
+
     static {
         sFontSizeBtnsMap.put(R.id.ll_font_large, ResourceParser.TEXT_LARGE);
         sFontSizeBtnsMap.put(R.id.ll_font_small, ResourceParser.TEXT_SMALL);
@@ -128,6 +114,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     }
 
     private static final Map<Integer, Integer> sFontSelectorSelectionMap = new HashMap<Integer, Integer>();
+
     static {
         sFontSelectorSelectionMap.put(ResourceParser.TEXT_LARGE, R.id.iv_large_select);
         sFontSelectorSelectionMap.put(ResourceParser.TEXT_SMALL, R.id.iv_small_select);
@@ -135,20 +122,28 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         sFontSelectorSelectionMap.put(ResourceParser.TEXT_SUPER, R.id.iv_super_select);
     }
 
-    private static final Map<Integer, Integer> sFontColorSelectorSelectionMap = new HashMap<Integer, Integer>(); //字体颜色map
+    private static final Map<Integer, Integer> sFontColorBtnsMap = new HashMap<Integer, Integer>();
+
     static {
-        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_BLACK, R.id.iv_large_select);
-        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_BLUE, R.id.iv_small_select);
-        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_YELLOW, R.id.iv_medium_select);
-        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_GREEN, R.id.iv_super_select);
-        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_RED,R.id.iv_alert_icon);
+        sFontSizeBtnsMap.put(R.id.ll_font_black, ResourceParser.FONT_BLACK);
+        sFontSizeBtnsMap.put(R.id.ll_font_blue, ResourceParser.FONT_BLUE);
+        sFontSizeBtnsMap.put(R.id.ll_font_yellow, ResourceParser.FONT_YELLOW);
+        sFontSizeBtnsMap.put(R.id.ll_font_green, ResourceParser.FONT_GREEN);
+        sFontSizeBtnsMap.put(R.id.ll_font_red, ResourceParser.FONT_RED);
+    }
+
+    private static final Map<Integer, Integer> sFontColorSelectorSelectionMap = new HashMap<Integer, Integer>(); //字体颜色map
+
+    static {
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_BLACK, R.id.ll_font_black);
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_BLUE, R.id.ll_font_blue);
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_YELLOW, R.id.ll_font_yellow);
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_GREEN, R.id.ll_font_green);
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_RED, R.id.ll_font_red);
     }
 
     private static final String TAG = "NoteEditActivity";
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE };
+
     private HeadViewHolder mNoteHeaderHolder;
 
     private View mHeadViewPanel;
@@ -157,7 +152,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
 
     private View mFontSizeSelector;
 
-    private  View mFontColorSelector;
+    private View mFontColorSelector;
 
     private EditText mNoteEditor;
 
@@ -167,6 +162,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
 
     private SharedPreferences mSharedPrefs;
     private int mFontSizeId;
+    private int mFontColorId;
 
     private static final String PREFERENCE_FONT_SIZE = "pref_font_size";
 
@@ -176,8 +172,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     public static final String TAG_UNCHECKED = String.valueOf('\u25A1');
 
     private LinearLayout mEditTextList;
-    //插入图片
-    private ImageButton mInsertImage;
+
     private String mUserQuery;
     private Pattern mPattern;
 
@@ -246,7 +241,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             getWindow().setSoftInputMode(
                     WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN
                             | WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        } else if(TextUtils.equals(Intent.ACTION_INSERT_OR_EDIT, intent.getAction())) {
+        } else if (TextUtils.equals(Intent.ACTION_INSERT_OR_EDIT, intent.getAction())) {
             // New note
             long folderId = intent.getLongExtra(Notes.INTENT_EXTRA_FOLDER_ID, 0);
             int widgetId = intent.getIntExtra(Notes.INTENT_EXTRA_WIDGET_ID,
@@ -341,7 +336,8 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         } else {
             mNoteHeaderHolder.tvAlertDate.setVisibility(View.GONE);
             mNoteHeaderHolder.ivAlertIcon.setVisibility(View.GONE);
-        };
+        }
+        ;
     }
 
     @Override
@@ -378,11 +374,16 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             mFontSizeSelector.setVisibility(View.GONE);
             return true;
         }
+        if (mFontColorSelector.getVisibility() == View.VISIBLE
+                && !inRangeOfView(mFontColorSelector, ev)) {
+            mFontColorSelector.setVisibility(View.GONE);
+            return true;
+        }
         return super.dispatchTouchEvent(ev);
     }
 
     private boolean inRangeOfView(View view, MotionEvent ev) {
-        int []location = new int[2];
+        int[] location = new int[2];
         view.getLocationOnScreen(location);
         int x = location[0];
         int y = location[1];
@@ -390,8 +391,8 @@ public class NoteEditActivity extends Activity implements OnClickListener,
                 || ev.getX() > (x + view.getWidth())
                 || ev.getY() < y
                 || ev.getY() > (y + view.getHeight())) {
-                    return false;
-                }
+            return false;
+        }
         return true;
     }
 
@@ -406,18 +407,6 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         mNoteEditor = (EditText) findViewById(R.id.note_edit_view);
         mNoteEditorPanel = findViewById(R.id.sv_note_edit);
         mNoteBgColorSelector = findViewById(R.id.note_bg_color_selector);
-        mInsertImage =(ImageButton) findViewById(R.id.insert_image);
-        //绑定图片插入按钮点击事件
-        mInsertImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            //获取iamge图片
-            public void onClick(View v) {
-
-                Intent getAlbum=new Intent(Intent.ACTION_GET_CONTENT);
-                getAlbum.setType("image/*");
-                startActivityForResult(getAlbum,1);
-            }
-        });
         for (int id : sBgSelectorBtnsMap.keySet()) {
             ImageView iv = (ImageView) findViewById(id);
             iv.setOnClickListener(this);
@@ -427,102 +416,46 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         for (int id : sFontSizeBtnsMap.keySet()) {
             View view = findViewById(id);
             view.setOnClickListener(this);
-        };
+        }
+        ;
+        for (int id : sFontSizeBtnsMap.keySet()) {
+            View view = findViewById(id);
+            view.setOnClickListener(this);
+        }
+        ;
+        mFontColorSelector = findViewById(R.id.font_color_selector);
+
+        for (int id : sFontColorBtnsMap.keySet()) {
+            View view = findViewById(id);
+            view.setOnClickListener(this);
+        }
+        ;
+        for (int id : sFontColorBtnsMap.keySet()) {
+            View view = findViewById(id);
+            view.setOnClickListener(this);
+        }
+        ;
         mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         mFontSizeId = mSharedPrefs.getInt(PREFERENCE_FONT_SIZE, ResourceParser.BG_DEFAULT_FONT_SIZE);
-
-        if(mFontSizeId >= TextAppearanceResources.getResourcesSize()) {
+        /**
+         * HACKME: Fix bug of store the resource id in shared preference.
+         * The id may larger than the length of resources, in this case,
+         * return the {@link ResourceParser#BG_DEFAULT_FONT_SIZE}
+         */
+        if (mFontSizeId >= TextAppearanceResources.getResourcesSize()) {
             mFontSizeId = ResourceParser.BG_DEFAULT_FONT_SIZE;
+        }
+        //TODO:照着上面的if抄的，大概率有问题，还没细看
+        if (mFontColorId >= TextAppearanceResources.getResourcesSize()) {
+//            mFontColorId = ResourceParser.BG_DEFAULT_FONT_COLOR;
         }
         mEditTextList = (LinearLayout) findViewById(R.id.note_edit_list);
     }
-    //接收从图库选择的图片，再获取在手机中的存储路径，将其保存在path中，然后调用insertImg方法，插入EditText中
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Bitmap bm = null;
-        // 外界的程序访问ContentProvider所提供数据 可以通过ContentResolver接口
-        ContentResolver resolver = getContentResolver();
-        if(requestCode == 1){
-            try{
-                // 获得图片的uri
-                Uri originalUri = data.getData();
-                bm = MediaStore.Images.Media.getBitmap(resolver,originalUri);
-                String[] proj = {MediaStore.Images.Media.DATA};
-                // 好像是android多媒体数据库的封装接口，具体的看Android文档
-                Cursor cursor = managedQuery(originalUri,proj,null,null,null);
-                // 按我个人理解 这个是获得用户选择的图片的索引值
-                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                // 将光标移至开头 ，这个很重要，不小心很容易引起越界
-                cursor.moveToFirst();
-                // 最后根据索引值获取图片路径
-                String path = cursor.getString(column_index);
-                insertImg(path);
-
-            }catch (Exception e){
-                e.printStackTrace();
-                Toast.makeText(NoteEditActivity.this,"图片插入失败",Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-    //region 插入图片
-    private void insertImg(String path){
-        String tagPath = "<img src=\""+path+"\"/>";//为图片路径加上<img>标签
-        Bitmap bitmap = BitmapFactory.decodeFile(path);
-        if(bitmap != null){
-            SpannableString ss = getBitmapMime(path,tagPath);
-            insertPhotoToEditText(ss);
-            mNoteEditor.append("\n");
-            Log.d("YYPT", mNoteEditor.getText().toString());
-        }
-    }
-    //endregion
-
-    //region 将图片插入到EditText中
-    private void insertPhotoToEditText(SpannableString ss){
-        Editable et = mNoteEditor.getText();
-        int start = mNoteEditor.getSelectionStart();
-        et.insert(start,ss);
-        mNoteEditor.setText(et);
-        mNoteEditor.setSelection(start+ss.length());
-        mNoteEditor.setFocusableInTouchMode(true);
-        mNoteEditor.setFocusable(true);
-        //bug
-
-    }
-    //endregion
-
-    private SpannableString getBitmapMime(String path,String tagPath) {
-        SpannableString ss = new SpannableString(tagPath);//这里使用加了<img>标签的图片路径
-
-        int width = ScreenUtils.getScreenWidth(NoteEditActivity.this);
-        int height = ScreenUtils.getScreenHeight(NoteEditActivity.this);
-
-
-        Bitmap bitmap = ImageUtils.getSmallBitmap(path,width,480);
-        ImageSpan imageSpan = new ImageSpan(this, bitmap);
-        ss.setSpan(imageSpan, 0, tagPath.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        return ss;
-    }
-
-    Html.ImageGetter imageGetter = new Html.ImageGetter(){
-        @Override
-        public Drawable getDrawable(String s) {
-
-            int width = ScreenUtils.getScreenWidth(NoteEditActivity.this);
-            int height = ScreenUtils.getScreenHeight(NoteEditActivity.this);
-            Bitmap bitmap = ImageUtils.getSmallBitmap(s,width,480);
-            Drawable drawable = new BitmapDrawable(bitmap);
-            drawable.setBounds(0,0,width,height);
-            return drawable;
-        }
-
-    };
-
 
     @Override
     protected void onPause() {
         super.onPause();
-        if(saveNote()) {
+        if (saveNote()) {
             Log.d(TAG, "Note data was saved with length:" + mWorkingNote.getContent().length());
         }
         clearSettingState();
@@ -539,8 +472,8 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             return;
         }
 
-        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, new int[] {
-            mWorkingNote.getWidgetId()
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, new int[]{
+                mWorkingNote.getWidgetId()
         });
 
         sendBroadcast(intent);
@@ -569,15 +502,18 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             } else {
                 mNoteEditor.setTextAppearance(this,
                         TextAppearanceResources.getTexAppearanceResource(mFontSizeId));
-
             }
             mFontSizeSelector.setVisibility(View.GONE);
+        }
+        //TODO:照抄上面的if
+        else if(sFontColorBtnsMap.containsKey(id)) {
+
         }
     }
 
     @Override
     public void onBackPressed() {
-        if(clearSettingState()) {
+        if (clearSettingState()) {
             return;
         }
 
@@ -654,10 +590,11 @@ public class NoteEditActivity extends Activity implements OnClickListener,
                 findViewById(sFontSelectorSelectionMap.get(mFontSizeId)).setVisibility(View.VISIBLE);
                 break;
             case R.id.menu_font_color:
-                Toast toast=Toast.makeText(getApplicationContext(), "更换颜色字体", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(), "更换字体3颜色", Toast.LENGTH_SHORT);
                 toast.show();
-                //mFontColorSelector.setVisibility(View.VISIBLE);
-                //findViewById(sFontColorSelectorSelectionMap.get(mFontColorId)).setVisibility(View.VISIBLE);
+                mFontColorSelector.setVisibility(View.VISIBLE);
+                findViewById(sFontColorSelectorSelectionMap.get(mFontColorId)).setVisibility(View.VISIBLE);
+                break;
             case R.id.menu_list_mode:
                 mWorkingNote.setCheckListMode(mWorkingNote.getCheckListMode() == 0 ?
                         TextNote.MODE_CHECK_LIST : 0);
@@ -685,7 +622,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         DateTimePickerDialog d = new DateTimePickerDialog(this, System.currentTimeMillis());
         d.setOnDateTimeSetListener(new OnDateTimeSetListener() {
             public void OnDateTimeSet(AlertDialog dialog, long date) {
-                mWorkingNote.setAlertDate(date	, true);
+                mWorkingNote.setAlertDate(date, true);
             }
         });
         d.show();
@@ -754,7 +691,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
             AlarmManager alarmManager = ((AlarmManager) getSystemService(ALARM_SERVICE));
             showAlertHeader();
-            if(!set) {
+            if (!set) {
                 alarmManager.cancel(pendingIntent);
             } else {
                 alarmManager.set(AlarmManager.RTC_WAKEUP, date, pendingIntent);
@@ -787,7 +724,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
 
         mEditTextList.removeViewAt(index);
         NoteEditText edit = null;
-        if(index == 0) {
+        if (index == 0) {
             edit = (NoteEditText) mEditTextList.getChildAt(0).findViewById(
                     R.id.et_edit_text);
         } else {
@@ -804,7 +741,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         /**
          * Should not happen, check for debug
          */
-        if(index > mEditTextList.getChildCount()) {
+        if (index > mEditTextList.getChildCount()) {
             Log.e(TAG, "Index out of mEditTextList boundrary, should not happen");
         }
 
@@ -824,7 +761,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         String[] items = text.split("\n");
         int index = 0;
         for (String item : items) {
-            if(!TextUtils.isEmpty(item)) {
+            if (!TextUtils.isEmpty(item)) {
                 mEditTextList.addView(getListItem(item, index));
                 index++;
             }
@@ -889,7 +826,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             Log.e(TAG, "Wrong index, should not happen");
             return;
         }
-        if(hasText) {
+        if (hasText) {
             mEditTextList.getChildAt(index).findViewById(R.id.cb_edit_item).setVisibility(View.VISIBLE);
         } else {
             mEditTextList.getChildAt(index).findViewById(R.id.cb_edit_item).setVisibility(View.GONE);
@@ -998,9 +935,9 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     private void showToast(int resId, int duration) {
         Toast.makeText(this, resId, duration).show();
     }
-    
+
 
     public void OnOpenMenu(View view) {
-		openOptionsMenu();
-	}
+        openOptionsMenu();
+    }
 }
