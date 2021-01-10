@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/list_background">
+    android:background="@drawable/list_background"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -20,10 +21,19 @@
                 android:id="@+id/tv_modified_date"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_gravity="left|center_vertical"
                 android:layout_marginRight="8dip"
-                android:layout_weight="1"
                 android:textAppearance="@style/TextAppearanceSecondaryItem" />
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/insert_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:src="@drawable/insert_image"
+                />
+
+
             <!-- 右上提醒标志-->
             <ImageView
                 android:id="@+id/iv_alert_icon"
@@ -40,24 +50,22 @@
                 android:layout_marginLeft="2dip"
                 android:layout_marginRight="8dip"
                 android:textAppearance="@style/TextAppearanceSecondaryItem" />
-            <!-- 主题颜色选择-->
-
-
-            <ImageView
-                android:id="@+id/btn_set_bg_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@drawable/bg_btn_set_color"
-                android:padding="10dp" />
 
             <ImageButton
                 android:id="@+id/menu_more"
-                android:layout_width="24dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="right"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:background="@drawable/ic_menu_more_dark"
                 android:onClick="OnOpenMenu" />
+
+            <ImageView
+        		android:id="@+id/btn_set_bg_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_btn_set_color" />
         </LinearLayout>
 
         <LinearLayout
@@ -74,11 +82,11 @@
             <ScrollView
                 android:layout_width="fill_parent"
                 android:layout_height="0dip"
-                android:layout_gravity="left|top"
                 android:layout_weight="1"
-                android:fadingEdgeLength="0dip"
+                android:scrollbars="none"
                 android:overScrollMode="never"
-                android:scrollbars="none">
+                android:layout_gravity="left|top"
+                android:fadingEdgeLength="0dip">
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -89,20 +97,21 @@
                         android:id="@+id/note_edit_view"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:autoLink="all"
-                        android:background="@null"
                         android:gravity="left|top"
-                        android:lineSpacingMultiplier="1.2"
+                        android:background="@null"
+                        android:autoLink="all"
                         android:linksClickable="false"
                         android:minLines="12"
-                        android:textAppearance="@style/TextAppearancePrimaryItem" />
+                        android:textAppearance="@style/TextAppearancePrimaryItem"
+                        android:lineSpacingMultiplier="1.2"
+                         />
 
                     <LinearLayout
                         android:id="@+id/note_edit_list"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="-10dip"
                         android:orientation="vertical"
+                        android:layout_marginLeft="-10dip"
                         android:visibility="gone" />
                 </LinearLayout>
             </ScrollView>
@@ -115,19 +124,19 @@
     </LinearLayout>
     <!--背景色选择点击事件-->
     <ImageView
-        android:layout_width="88dp"
-        android:layout_height="29dp"
-        android:layout_gravity="top|right"
-        android:background="@drawable/bg_color_btn_mask" />
+        android:layout_height="43dip"
+        android:layout_width="wrap_content"
+        android:background="@drawable/bg_color_btn_mask"
+        android:layout_gravity="top|right" />
     <!-- 背景色选择面板-->
     <LinearLayout
         android:id="@+id/note_bg_color_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|right"
+        android:background="@drawable/note_edit_color_selector_panel"
         android:layout_marginTop="30dip"
         android:layout_marginRight="8dip"
-        android:background="@drawable/note_edit_color_selector_panel"
+        android:layout_gravity="top|right"
         android:visibility="gone">
         <!--以下是五个颜色选择的图片+已选择标记-->
         <!--黄-->
@@ -148,8 +157,8 @@
                 android:layout_gravity="bottom|right"
                 android:layout_marginRight="5dip"
                 android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:src="@drawable/selected" />
         </FrameLayout>
         <!--蓝-->
         <FrameLayout
@@ -167,10 +176,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
-                android:layout_marginRight="3dip"
                 android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:layout_marginRight="3dip"
+                android:src="@drawable/selected" />
         </FrameLayout>
         <!--白-->
         <FrameLayout
@@ -188,10 +197,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
-                android:layout_marginRight="2dip"
                 android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:layout_marginRight="2dip"
+                android:src="@drawable/selected" />
         </FrameLayout>
         <!--绿-->
         <FrameLayout
@@ -210,8 +219,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
                 android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:src="@drawable/selected" />
         </FrameLayout>
         <!--红-->
         <FrameLayout
@@ -230,8 +239,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
                 android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:src="@drawable/selected" />
         </FrameLayout>
     </LinearLayout>
     <!--文字大小设置-->
@@ -239,8 +248,8 @@
         android:id="@+id/font_size_selector"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
         android:background="@drawable/font_size_selector_bg"
+        android:layout_gravity="bottom"
         android:visibility="gone">
         <!--小-->
         <FrameLayout
@@ -252,15 +261,15 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:src="@drawable/font_small" />
+                    android:src="@drawable/font_small"
+                    android:layout_marginBottom="5dip" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -268,7 +277,6 @@
                     android:text="@string/menu_font_small"
                     android:textAppearance="@style/TextAppearanceUnderMenuIcon" />
             </LinearLayout>
-
             <ImageView
                 android:id="@+id/iv_small_select"
                 android:layout_width="wrap_content"
@@ -277,8 +285,8 @@
                 android:layout_marginRight="6dip"
                 android:layout_marginBottom="-7dip"
                 android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
+                android:visibility="gone"
+                android:src="@drawable/selected" />
         </FrameLayout>
         <!--中-->
         <FrameLayout
@@ -290,15 +298,15 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:src="@drawable/font_normal" />
+                    android:src="@drawable/font_normal"
+                    android:layout_marginBottom="5dip" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -312,11 +320,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
+                android:focusable="false"
+                android:visibility="gone"
                 android:layout_marginRight="6dip"
                 android:layout_marginBottom="-7dip"
-                android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
+                android:src="@drawable/selected" />
         </FrameLayout>
         <!--大-->
         <FrameLayout
@@ -328,15 +336,15 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:src="@drawable/font_large" />
+                    android:src="@drawable/font_large"
+                    android:layout_marginBottom="5dip" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -350,11 +358,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
+                android:focusable="false"
+                android:visibility="gone"
                 android:layout_marginRight="6dip"
                 android:layout_marginBottom="-7dip"
-                android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
+                android:src="@drawable/selected" />
         </FrameLayout>
         <!--超大-->
         <FrameLayout
@@ -366,15 +374,15 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:gravity="center">
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:src="@drawable/font_super" />
+                    android:src="@drawable/font_super"
+                    android:layout_marginBottom="5dip" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -388,205 +396,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|right"
+                android:focusable="false"
+                android:visibility="gone"
                 android:layout_marginRight="6dip"
                 android:layout_marginBottom="-7dip"
-                android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
-        </FrameLayout>
-    </LinearLayout>
-    <!-- 文字颜色选择器 -->
-    <LinearLayout
-        android:id="@+id/font_color_selector"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@drawable/font_size_selector_bg"
-        android:visibility="gone">
-        <!-- black-->
-        <FrameLayout
-            android:id="@+id/ll_font_black"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:src="@drawable/font_black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/menu_font_color_black"
-                    android:textAppearance="@style/TextAppearanceUnderMenuIcon" />
-            </LinearLayout>
-            <ImageView
-                android:id="@+id/iv_black_select"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="6dip"
-                android:layout_marginBottom="-7dip"
-                android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
-        </FrameLayout>
-<!--    green    -->
-        <FrameLayout
-            android:id="@+id/ll_font_green"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:src="@drawable/font_green" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/menu_font_color_green"
-                    android:textAppearance="@style/TextAppearanceUnderMenuIcon" />
-            </LinearLayout>
-            <ImageView
-                android:id="@+id/iv_green_select"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="6dip"
-                android:layout_marginBottom="-7dip"
-                android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
-        </FrameLayout>
-<!--        red-->
-        <FrameLayout
-            android:id="@+id/ll_font_red"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:src="@drawable/font_red" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/menu_font_color_red"
-                    android:textAppearance="@style/TextAppearanceUnderMenuIcon" />
-            </LinearLayout>
-            <ImageView
-                android:id="@+id/iv_red_select"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="6dip"
-                android:layout_marginBottom="-7dip"
-                android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
-        </FrameLayout>
-<!--blue-->
-        <FrameLayout
-            android:id="@+id/ll_font_blue"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:src="@drawable/font_blue" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/menu_font_color_blue"
-                    android:textAppearance="@style/TextAppearanceUnderMenuIcon" />
-            </LinearLayout>
-            <ImageView
-                android:id="@+id/iv_blue_select"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="6dip"
-                android:layout_marginBottom="-7dip"
-                android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
-        </FrameLayout>
-<!--yellow-->
-        <FrameLayout
-            android:id="@+id/ll_font_yellow"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dip"
-                    android:src="@drawable/font_yellow" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/menu_font_color_yellow"
-                    android:textAppearance="@style/TextAppearanceUnderMenuIcon" />
-            </LinearLayout>
-            <ImageView
-                android:id="@+id/iv_yellow_select"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="6dip"
-                android:layout_marginBottom="-7dip"
-                android:focusable="false"
-                android:src="@drawable/selected"
-                android:visibility="gone" />
+                android:src="@drawable/selected" />
         </FrameLayout>
     </LinearLayout>
 </FrameLayout>
