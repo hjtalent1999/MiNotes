@@ -506,6 +506,9 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             mFontSizeSelector.setVisibility(View.GONE);
         }
         //TODO:照抄上面的if
+        else if(sFontColorBtnsMap.containsKey(id)) {
+
+        }
     }
 
     @Override
@@ -587,7 +590,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
                 findViewById(sFontSelectorSelectionMap.get(mFontSizeId)).setVisibility(View.VISIBLE);
                 break;
             case R.id.menu_font_color:
-                Toast toast = Toast.makeText(getApplicationContext(), "更换字体颜色", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(), "更换字体3颜色", Toast.LENGTH_SHORT);
                 toast.show();
                 mFontColorSelector.setVisibility(View.VISIBLE);
                 findViewById(sFontColorSelectorSelectionMap.get(mFontColorId)).setVisibility(View.VISIBLE);
