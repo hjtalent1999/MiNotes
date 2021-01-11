@@ -21,5 +21,6 @@
     <color name="font_color_red">#FFFF0000</color>
     <color name="font_color_green">#FF00FF00</color>
     <color name="font_color_blue">#FF0000FF</color>
+    <color name="font_color_yellow">#FFFFFF00</color>
 
 </resources>

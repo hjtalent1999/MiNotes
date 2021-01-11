@@ -33,7 +33,21 @@
         <item name="android:textSize">@dimen/text_font_size_normal</item>
         <item name="android:textColorLink">#0000ff</item>
     </style>
-
+    <style name="TextColorBlack">
+        <item name="android:textColor">@color/font_color_black</item>
+    </style>
+    <style name="TextColorGreen">
+    <item name="android:textColor">@color/font_color_green</item>
+</style>
+    <style name="TextColorYellow">
+        <item name="android:textColor">@color/font_color_yellow</item>
+    </style>
+    <style name="TextColorBlue">
+        <item name="android:textColor">@color/font_color_blue</item>
+    </style>
+    <style name="TextColorRed">
+        <item name="android:textColor">@color/font_color_red</item>
+    </style>
     <style name="TextAppearancePrimaryItem">
         <item name="android:textSize">@dimen/text_font_size_normal</item>
         <item name="android:textColor">@color/primary_text_dark</item>

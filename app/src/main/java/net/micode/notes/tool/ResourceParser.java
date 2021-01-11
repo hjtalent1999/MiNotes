@@ -169,6 +169,12 @@ public class ResourceParser {
             R.style.TextAppearanceMedium,
             R.style.TextAppearanceLarge,
             R.style.TextAppearanceSuper
+        };private final static int [] TEXTCOLOR_RESOURCES = new int [] {
+                R.style.TextColorBlack,
+                R.style.TextColorBlue,
+                R.style.TextColorYellow,
+                R.style.TextColorGreen,
+                R.style.TextColorRed,
         };
 
         public static int getTexAppearanceResource(int id) {
@@ -182,9 +188,22 @@ public class ResourceParser {
             }
             return TEXTAPPEARANCE_RESOURCES[id];
         }
-
+        public static int getTexColorResource(int id) {
+            /**
+             * HACKME: Fix bug of store the resource id in shared preference.
+             * The id may larger than the length of resources, in this case,
+             * return the {@link ResourceParser#BG_DEFAULT_FONT_SIZE}
+             */
+            if (id >= TEXTCOLOR_RESOURCES.length) {
+                return BG_DEFAULT_FONT_COLOR;
+            }
+            return TEXTCOLOR_RESOURCES[id];
+        }
         public static int getResourcesSize() {
             return TEXTAPPEARANCE_RESOURCES.length;
+        }
+        public static int getColorResourcesSize() {
+            return TEXTCOLOR_RESOURCES.length;
         }
     }
 }

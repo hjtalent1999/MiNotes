@@ -113,6 +113,8 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         sFontSizeBtnsMap.put(R.id.ll_font_super, ResourceParser.TEXT_SUPER);
     }
 
+    ;
+
     private static final Map<Integer, Integer> sFontSelectorSelectionMap = new HashMap<Integer, Integer>();
 
     static {
@@ -122,24 +124,26 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         sFontSelectorSelectionMap.put(ResourceParser.TEXT_SUPER, R.id.iv_super_select);
     }
 
+    ;
+
     private static final Map<Integer, Integer> sFontColorBtnsMap = new HashMap<Integer, Integer>();
 
     static {
-        sFontSizeBtnsMap.put(R.id.ll_font_black, ResourceParser.FONT_BLACK);
-        sFontSizeBtnsMap.put(R.id.ll_font_blue, ResourceParser.FONT_BLUE);
-        sFontSizeBtnsMap.put(R.id.ll_font_yellow, ResourceParser.FONT_YELLOW);
-        sFontSizeBtnsMap.put(R.id.ll_font_green, ResourceParser.FONT_GREEN);
-        sFontSizeBtnsMap.put(R.id.ll_font_red, ResourceParser.FONT_RED);
+        sFontColorBtnsMap.put(R.id.ll_font_black, ResourceParser.FONT_BLACK);
+        sFontColorBtnsMap.put(R.id.ll_font_blue, ResourceParser.FONT_BLUE);
+        sFontColorBtnsMap.put(R.id.ll_font_yellow, ResourceParser.FONT_YELLOW);
+        sFontColorBtnsMap.put(R.id.ll_font_green, ResourceParser.FONT_GREEN);
+        sFontColorBtnsMap.put(R.id.ll_font_red, ResourceParser.FONT_RED);
     }
 
     private static final Map<Integer, Integer> sFontColorSelectorSelectionMap = new HashMap<Integer, Integer>(); //字体颜色map
 
     static {
-        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_BLACK, R.id.ll_font_black);
-        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_BLUE, R.id.ll_font_blue);
-        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_YELLOW, R.id.ll_font_yellow);
-        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_GREEN, R.id.ll_font_green);
-        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_RED, R.id.ll_font_red);
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_BLACK, R.id.iv_black_select);
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_BLUE, R.id.iv_blue_select);
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_YELLOW, R.id.iv_yellow_select);
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_GREEN, R.id.iv_green_select);
+        sFontColorSelectorSelectionMap.put(ResourceParser.FONT_RED, R.id.iv_red_select);
     }
 
     private static final String TAG = "NoteEditActivity";
@@ -165,6 +169,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     private int mFontColorId;
 
     private static final String PREFERENCE_FONT_SIZE = "pref_font_size";
+    private static final String PREFERENCE_FONT_COLOR = "pref_font_color";
 
     private static final int SHORTCUT_ICON_TITLE_MAX_LEN = 10;
 
@@ -298,6 +303,8 @@ public class NoteEditActivity extends Activity implements OnClickListener,
     private void initNoteScreen() {
         mNoteEditor.setTextAppearance(this, TextAppearanceResources
                 .getTexAppearanceResource(mFontSizeId));
+        mNoteEditor.setTextAppearance(this, TextAppearanceResources
+                .getTexColorResource(mFontColorId));
         if (mWorkingNote.getCheckListMode() == TextNote.MODE_CHECK_LIST) {
             switchToListMode(mWorkingNote.getContent());
         } else {
@@ -418,11 +425,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             view.setOnClickListener(this);
         }
         ;
-        for (int id : sFontSizeBtnsMap.keySet()) {
-            View view = findViewById(id);
-            view.setOnClickListener(this);
-        }
-        ;
+
         mFontColorSelector = findViewById(R.id.font_color_selector);
 
         for (int id : sFontColorBtnsMap.keySet()) {
@@ -430,13 +433,9 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             view.setOnClickListener(this);
         }
         ;
-        for (int id : sFontColorBtnsMap.keySet()) {
-            View view = findViewById(id);
-            view.setOnClickListener(this);
-        }
-        ;
         mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         mFontSizeId = mSharedPrefs.getInt(PREFERENCE_FONT_SIZE, ResourceParser.BG_DEFAULT_FONT_SIZE);
+        mFontColorId = mSharedPrefs.getInt(PREFERENCE_FONT_COLOR, ResourceParser.BG_DEFAULT_FONT_COLOR);
         /**
          * HACKME: Fix bug of store the resource id in shared preference.
          * The id may larger than the length of resources, in this case,
@@ -446,8 +445,8 @@ public class NoteEditActivity extends Activity implements OnClickListener,
             mFontSizeId = ResourceParser.BG_DEFAULT_FONT_SIZE;
         }
         //TODO:照着上面的if抄的，大概率有问题，还没细看
-        if (mFontColorId >= TextAppearanceResources.getResourcesSize()) {
-//            mFontColorId = ResourceParser.BG_DEFAULT_FONT_COLOR;
+        if (mFontColorId >= TextAppearanceResources.getColorResourcesSize()) {
+            mFontColorId = ResourceParser.BG_DEFAULT_FONT_COLOR;
         }
         mEditTextList = (LinearLayout) findViewById(R.id.note_edit_list);
     }
@@ -504,10 +503,19 @@ public class NoteEditActivity extends Activity implements OnClickListener,
                         TextAppearanceResources.getTexAppearanceResource(mFontSizeId));
             }
             mFontSizeSelector.setVisibility(View.GONE);
-        }
-        //TODO:照抄上面的if
-        else if(sFontColorBtnsMap.containsKey(id)) {
-
+        } else if (sFontColorBtnsMap.containsKey(id)) {
+            findViewById(sFontColorSelectorSelectionMap.get(mFontColorId)).setVisibility(View.GONE);
+            mFontColorId = sFontColorBtnsMap.get(id);
+            mSharedPrefs.edit().putInt(PREFERENCE_FONT_COLOR, mFontColorId).commit();
+            findViewById(sFontColorSelectorSelectionMap.get(mFontColorId)).setVisibility(View.VISIBLE);
+            if (mWorkingNote.getCheckListMode() == TextNote.MODE_CHECK_LIST) {
+                getWorkingText();
+                switchToListMode(mWorkingNote.getContent());
+            } else {
+                mNoteEditor.setTextAppearance(this,
+                        TextAppearanceResources.getTexColorResource(mFontColorId));
+            }
+            mFontColorSelector.setVisibility(View.GONE);
         }
     }
 
@@ -528,6 +536,8 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         } else if (mFontSizeSelector.getVisibility() == View.VISIBLE) {
             mFontSizeSelector.setVisibility(View.GONE);
             return true;
+        } else if (mFontColorSelector.getVisibility() == View.VISIBLE) {
+            mFontColorSelector.setVisibility((View.GONE));
         }
         return false;
     }
@@ -590,8 +600,6 @@ public class NoteEditActivity extends Activity implements OnClickListener,
                 findViewById(sFontSelectorSelectionMap.get(mFontSizeId)).setVisibility(View.VISIBLE);
                 break;
             case R.id.menu_font_color:
-                Toast toast = Toast.makeText(getApplicationContext(), "更换字体3颜色", Toast.LENGTH_SHORT);
-                toast.show();
                 mFontColorSelector.setVisibility(View.VISIBLE);
                 findViewById(sFontColorSelectorSelectionMap.get(mFontColorId)).setVisibility(View.VISIBLE);
                 break;
@@ -794,6 +802,7 @@ public class NoteEditActivity extends Activity implements OnClickListener,
         View view = LayoutInflater.from(this).inflate(R.layout.note_edit_list_item, null);
         final NoteEditText edit = (NoteEditText) view.findViewById(R.id.et_edit_text);
         edit.setTextAppearance(this, TextAppearanceResources.getTexAppearanceResource(mFontSizeId));
+        edit.setTextAppearance(this, TextAppearanceResources.getTexColorResource(mFontColorId));
         CheckBox cb = ((CheckBox) view.findViewById(R.id.cb_edit_item));
         cb.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
