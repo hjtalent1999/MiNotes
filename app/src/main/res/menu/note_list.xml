@@ -21,5 +21,9 @@
         android:id="@+id/menu_search"
         android:icon="@drawable/note_search"
         android:title="@string/menu_search"/>
+        <item
+            android:icon="@drawable/cancel_search"
+            android:id="@+id/menu_cancel_search"
+            android:title="@string/menu_cancel_search"/>
     </group>
 </menu>

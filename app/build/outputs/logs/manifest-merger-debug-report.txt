@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-155:12
-INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-155:12
-INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-155:12
-INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-155:12
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-165:12
+INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-165:12
+INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-165:12
+INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-165:12
 MERGED from [com.android.support:design:28.0.0] C:\Users\51903\.gradle\caches\transforms-2\files-2.1\bbff6877ad5afecd256f9fb3033472f5\design-28.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\51903\.gradle\caches\transforms-2\files-2.1\e8694b6b387929b45b31b00686f81d82\circleimageview-2.1.0\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\51903\.gradle\caches\transforms-2\files-2.1\7f3fa8d587d4363e1ca9ee9b95b784e2\appcompat-v7-28.0.0\AndroidManifest.xml:17:1-22:12
@@ -35,9 +35,9 @@ MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\51903\.gradle\cach
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\51903\.gradle\caches\transforms-2\files-2.1\3ff1dcd229f05d3ed6ea73e9bcec5fe8\livedata-1.1.1\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\51903\.gradle\caches\transforms-2\files-2.1\8dca7e011b2c99528440907406c0541e\livedata-core-1.1.1\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\51903\.gradle\caches\transforms-2\files-2.1\6798853c956e78fbccb8ca635a9e6671\runtime-1.1.1\AndroidManifest.xml:17:1-22:12
-INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-155:12
-INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-155:12
-INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-155:12
+INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-165:12
+INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-165:12
+INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:18:1-165:12
 	package
 		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:20:5-31
 		INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml
@@ -91,7 +91,7 @@ ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:34:5-
 	android:name
 		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:34:22-78
 application
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:36:5-154:19
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:36:5-164:19
 MERGED from [com.android.support:design:28.0.0] C:\Users\51903\.gradle\caches\transforms-2\files-2.1\bbff6877ad5afecd256f9fb3033472f5\design-28.0.0\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] C:\Users\51903\.gradle\caches\transforms-2\files-2.1\bbff6877ad5afecd256f9fb3033472f5\design-28.0.0\AndroidManifest.xml:22:5-20
 MERGED from [de.hdodenhof:circleimageview:2.1.0] C:\Users\51903\.gradle\caches\transforms-2\files-2.1\e8694b6b387929b45b31b00686f81d82\circleimageview-2.1.0\AndroidManifest.xml:9:5-20
@@ -107,7 +107,7 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\51903\.gra
 	android:icon
 		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:37:9-42
 activity#net.micode.notes.ui.NotesListActivity
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:40:9-55:20
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:40:9-64:20
 	android:label
 		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:43:13-45
 	android:launchMode
@@ -132,138 +132,140 @@ category#android.intent.category.LAUNCHER
 ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:53:17-77
 	android:name
 		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:53:27-74
-activity#net.micode.notes.ui.NoteEditActivity
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:57:9-86:20
-	android:launchMode
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:60:13-43
-	android:configChanges
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:59:13-74
-	android:theme
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:61:13-45
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:58:13-48
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.DEFAULT+data:mimeType:vnd.android.cursor.item/call_note+data:mimeType:vnd.android.cursor.item/text_note
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:63:13-69:29
-	tools:ignore
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:64:17-47
-action#android.intent.action.VIEW
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:65:17-69
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:65:25-66
-category#android.intent.category.DEFAULT
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:66:17-76
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:66:27-73
-data
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:67:17-78
-	android:mimeType
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:67:23-75
-intent-filter#action:name:android.intent.action.INSERT_OR_EDIT+category:name:android.intent.category.DEFAULT+data:mimeType:vnd.android.cursor.item/call_note+data:mimeType:vnd.android.cursor.item/text_note
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:71:13-76:29
-action#android.intent.action.INSERT_OR_EDIT
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:72:17-79
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:72:25-76
 intent-filter#action:name:android.intent.action.SEARCH+category:name:android.intent.category.DEFAULT
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:78:13-81:29
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:55:13-58:29
 action#android.intent.action.SEARCH
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:79:17-71
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:56:17-71
 	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:79:25-68
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:56:25-68
+category#android.intent.category.DEFAULT
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:57:17-76
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:57:27-73
 meta-data#android.app.searchable
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:83:13-85:54
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:60:13-62:54
 	android:resource
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:85:17-51
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:62:17-51
 	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:84:17-54
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:61:17-54
+activity#net.micode.notes.ui.NoteEditActivity
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:66:9-95:20
+	android:launchMode
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:69:13-43
+	android:configChanges
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:68:13-74
+	android:theme
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:70:13-45
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:67:13-48
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.DEFAULT+data:mimeType:vnd.android.cursor.item/call_note+data:mimeType:vnd.android.cursor.item/text_note
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:72:13-78:29
+	tools:ignore
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:73:17-47
+action#android.intent.action.VIEW
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:74:17-69
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:74:25-66
+data
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:76:17-78
+	android:mimeType
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:76:23-75
+intent-filter#action:name:android.intent.action.INSERT_OR_EDIT+category:name:android.intent.category.DEFAULT+data:mimeType:vnd.android.cursor.item/call_note+data:mimeType:vnd.android.cursor.item/text_note
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:80:13-85:29
+action#android.intent.action.INSERT_OR_EDIT
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:81:17-79
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:81:25-76
 provider#net.micode.notes.data.NotesProvider
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:88:9-91:43
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:97:9-101:40
 	android:authorities
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:90:13-47
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:99:13-47
 	android:multiprocess
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:91:13-40
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:89:13-63
-receiver#net.micode.notes.widget.NoteWidgetProvider_2x
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:93:9-105:20
-	android:label
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:95:13-50
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:94:13-57
-intent-filter#action:name:android.appwidget.action.APPWIDGET_DELETED+action:name:android.appwidget.action.APPWIDGET_UPDATE+action:name:android.intent.action.PRIVACY_MODE_CHANGED
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:96:13-100:29
-action#android.appwidget.action.APPWIDGET_UPDATE
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:97:17-84
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:97:25-81
-action#android.appwidget.action.APPWIDGET_DELETED
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:98:17-85
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:98:25-82
-action#android.intent.action.PRIVACY_MODE_CHANGED
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:99:17-85
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:99:25-82
-meta-data#android.appwidget.provider
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:102:13-104:58
-	android:resource
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:104:17-55
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:103:17-58
-receiver#net.micode.notes.widget.NoteWidgetProvider_4x
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:106:9-119:20
-	android:label
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:108:13-50
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:107:13-57
-receiver#net.micode.notes.ui.AlarmInitReceiver
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:121:9-125:20
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:121:19-55
-intent-filter#action:name:android.intent.action.BOOT_COMPLETED
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:122:13-124:29
-action#android.intent.action.BOOT_COMPLETED
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:123:17-79
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:123:25-76
-receiver#net.micode.notes.ui.AlarmReceiver
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:127:9-130:20
-	android:process
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:129:13-38
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:128:13-61
-activity#net.micode.notes.ui.AlarmAlertActivity
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:132:9-137:20
-	android:label
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:134:13-45
-	android:launchMode
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:135:13-48
-	android:theme
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:136:13-75
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:133:13-50
-activity#net.micode.notes.ui.NotesPreferenceActivity
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:139:9-144:20
-	android:label
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:141:13-54
-	android:launchMode
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:142:13-43
-	android:theme
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:143:13-60
-	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:140:13-71
-service#net.micode.notes.gtask.remote.GTaskSyncService
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:146:9-149:19
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:100:13-40
 	android:exported
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:148:13-37
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:101:13-37
 	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:147:13-74
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:98:13-63
+receiver#net.micode.notes.widget.NoteWidgetProvider_2x
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:103:9-115:20
+	android:label
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:105:13-50
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:104:13-57
+intent-filter#action:name:android.appwidget.action.APPWIDGET_DELETED+action:name:android.appwidget.action.APPWIDGET_UPDATE+action:name:android.intent.action.PRIVACY_MODE_CHANGED
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:106:13-110:29
+action#android.appwidget.action.APPWIDGET_UPDATE
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:107:17-84
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:107:25-81
+action#android.appwidget.action.APPWIDGET_DELETED
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:108:17-85
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:108:25-82
+action#android.intent.action.PRIVACY_MODE_CHANGED
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:109:17-85
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:109:25-82
+meta-data#android.appwidget.provider
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:112:13-114:58
+	android:resource
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:114:17-55
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:113:17-58
+receiver#net.micode.notes.widget.NoteWidgetProvider_4x
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:116:9-129:20
+	android:label
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:118:13-50
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:117:13-57
+receiver#net.micode.notes.ui.AlarmInitReceiver
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:131:9-135:20
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:131:19-55
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:132:13-134:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:133:17-79
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:133:25-76
+receiver#net.micode.notes.ui.AlarmReceiver
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:137:9-140:20
+	android:process
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:139:13-38
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:138:13-61
+activity#net.micode.notes.ui.AlarmAlertActivity
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:142:9-147:20
+	android:label
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:144:13-45
+	android:launchMode
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:145:13-48
+	android:theme
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:146:13-75
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:143:13-50
+activity#net.micode.notes.ui.NotesPreferenceActivity
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:149:9-154:20
+	android:label
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:151:13-54
+	android:launchMode
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:152:13-43
+	android:theme
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:153:13-60
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:150:13-71
+service#net.micode.notes.gtask.remote.GTaskSyncService
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:156:9-159:19
+	android:exported
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:158:13-37
+	android:name
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:157:13-74
 meta-data#android.app.default_searchable
-ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:151:9-153:52
+ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:161:9-163:52
 	android:value
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:153:13-49
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:163:13-49
 	android:name
-		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:152:13-58
+		ADDED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml:162:13-58
 uses-sdk
 INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\AndroidLearningCode\MiNotes\app\src\main\AndroidManifest.xml

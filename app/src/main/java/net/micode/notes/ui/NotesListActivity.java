@@ -19,6 +19,7 @@ package net.micode.notes.ui;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.SearchManager;
 import android.appwidget.AppWidgetManager;
 import android.content.AsyncQueryHandler;
 import android.content.ContentResolver;
@@ -97,7 +98,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
 
     private enum ListEditState {
         NOTE_LIST, SUB_FOLDER, CALL_RECORD_FOLDER
-    };
+    }
 
     private ListEditState mState;
 
@@ -144,6 +145,7 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     private NavigationView mMenuNv;
     //菜单按钮
     private Button mMenuSet;
+    private String mSearchContent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -151,9 +153,6 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         //初始化资源
         initResources();
 
-        /**
-         * Insert an introduction when user firstly use this application
-         */
         setAppInfoFromRawRes();
     }
     // onActivityResult 回调函数 如果result为ok 且request为打开102或者创建便签103 则
@@ -183,19 +182,14 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
                 //Welcome to use MIUI notes!
                  in = getResources().openRawResource(R.raw.introduction);
                 //读取介绍成功
-                 if (in != null) {
-                     //将字节流转化为字符流
-                    InputStreamReader isr = new InputStreamReader(in);
-                    //从字符流中读取文本 in->isr->br
-                    BufferedReader br = new BufferedReader(isr);
-                    char [] buf = new char[1024];
-                    int len = 0;
-                    while ((len = br.read(buf)) > 0) {
-                        sb.append(buf, 0, len);
-                    }
-                } else {
-                    Log.e(TAG, "Read introduction file error");
-                    return;
+                //将字节流转化为字符流
+                InputStreamReader isr = new InputStreamReader(in);
+                //从字符流中读取文本 in->isr->br
+                BufferedReader br = new BufferedReader(isr);
+                char [] buf = new char[1024];
+                int len;
+                while ((len = br.read(buf)) > 0) {
+                    sb.append(buf, 0, len);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -218,10 +212,9 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
             note.setWorkingText(sb.toString());
             //保存介绍便签
             if (note.saveNote()) {
-                sp.edit().putBoolean(PREFERENCE_ADD_INTRODUCTION, true).commit();
+                sp.edit().putBoolean(PREFERENCE_ADD_INTRODUCTION, true).apply();
             } else {
                 Log.e(TAG, "Save introduction note error");
-                return;
             }
         }
     }
@@ -861,6 +854,8 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
         if (mState == ListEditState.NOTE_LIST) {
             getMenuInflater().inflate(R.menu.note_list, menu);
             // set sync or sync_cancel
+            //本次修改内容 -- 根据是否是搜索展示取消搜素按钮
+            menu.findItem(R.id.menu_cancel_search).setVisible(!TextUtils.isEmpty(mSearchContent));
         } else if (mState == ListEditState.SUB_FOLDER) {
             getMenuInflater().inflate(R.menu.sub_folder, menu);
         } else if (mState == ListEditState.CALL_RECORD_FOLDER) {
@@ -894,6 +889,11 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
             }
             case R.id.menu_search:
                 onSearchRequested();
+                break;
+            case R.id.menu_cancel_search:
+                //本次修改内容 -- 点击取消搜索按钮后显示全部便签内容
+                startAsyncNotesListQuery();
+                mSearchContent = "";
                 break;
             default:
                 break;
@@ -1038,4 +1038,24 @@ public class NotesListActivity extends Activity implements OnClickListener, OnIt
     public void OnOpenMenu(View view) {
 		openOptionsMenu();
 	}
+    //本次修改内容  -- 此处 在搜索页面输入内容后搜索时会跳转此方法
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            //记录用户的搜索内容
+            mSearchContent = query;
+            //获取到用户在输入框输入的内容后去过滤
+            searchContent(query);
+        }
+    }
+    //本次修改内容  --  使用模糊搜索内容
+    private void searchContent(String query) {
+        String selection = NoteColumns.SNIPPET + " LIKE ? ";
+        //使用LIKE模糊匹配
+        mBackgroundQueryHandler.startQuery(FOLDER_NOTE_LIST_QUERY_TOKEN, null,
+                Notes.CONTENT_NOTE_URI, NoteItemData.PROJECTION, selection, new String[]{
+                        String.format("%%%s%%", query)
+                }, NoteColumns.MODIFIED_DATE + " DESC");
+    }
 }

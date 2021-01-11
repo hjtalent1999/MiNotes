@@ -35,7 +35,8 @@
 
     <application
         android:icon="@drawable/icon_app"
-        android:label="@string/app_name">
+        android:label="@string/app_name"
+        android:allowBackup="true">
         <!-- 入口界面 NotesListActivity-->
         <activity
             android:name=".ui.NotesListActivity"
@@ -52,6 +53,15 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!--            本次修改内容 将搜索结果页面设置为此activity -->
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
         </activity>
         <!--编辑便签 包括新建 删除-->
         <activity
@@ -88,7 +98,8 @@
         <provider
             android:name="net.micode.notes.data.NotesProvider"
             android:authorities="micode_notes"
-            android:multiprocess="true" />
+            android:multiprocess="true"
+            android:exported="false" />
 
         <receiver
             android:name=".widget.NoteWidgetProvider_2x"
